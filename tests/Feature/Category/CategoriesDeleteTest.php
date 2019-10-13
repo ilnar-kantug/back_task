@@ -13,7 +13,7 @@ class CategoriesDeleteTest extends TestCase
         /** @var Category $category */
         $category = factory(Category::class)->create();
 
-        $this->delete(route('categories.update', ['category' => $category]))
+        $this->deleteJson(route('categories.update', ['category' => $category]))
             ->assertNoContent();
 
         $this->assertDatabaseMissing('categories', [
