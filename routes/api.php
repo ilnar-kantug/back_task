@@ -10,3 +10,11 @@
 | is assigned the "api" middleware group. Enjoy building your API!
 |
 */
+
+Route::group([
+    'middleware' => 'api',
+    'prefix' => 'categories',
+    'as' => 'categories.',
+], function ($router) {
+    Route::get('/', 'CategoryController@index')->name('index');
+});
