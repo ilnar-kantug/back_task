@@ -3,7 +3,7 @@ declare(strict_types=1);
 
 namespace App\Services;
 
-use App\Http\Requests\ProductRequest;
+use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Illuminate\Support\Str;
 use Symfony\Component\HttpKernel\Exception\HttpException;
@@ -12,7 +12,7 @@ class PhotoService
 {
     const PRODUCT_IMAGES_FOLDER = 'product_images/';
 
-    public function savePhoto(ProductRequest $request)
+    public function savePhoto(Request $request)
     {
         $subfolder = $this->generateSubfolder();
 
