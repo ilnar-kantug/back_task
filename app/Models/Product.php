@@ -18,6 +18,7 @@ use Illuminate\Database\Eloquent\Relations\BelongsToMany;
  */
 class Product extends Model
 {
+    const PRIMARY_KEY = 'id';
     const ATTR_TITLE = 'title';
     const ATTR_SLUG = 'slug';
     const ATTR_DESCRIPTION = 'description';

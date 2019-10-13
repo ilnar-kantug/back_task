@@ -12,9 +12,9 @@
 */
 
 Route::group([
-    'middleware' => 'api',
     'prefix' => 'categories',
     'as' => 'categories.',
 ], function ($router) {
     Route::get('/', 'CategoryController@index')->name('index');
+    Route::post('/', 'CategoryController@store')->name('store');
 });
