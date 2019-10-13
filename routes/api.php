@@ -19,4 +19,5 @@ Route::group([
     Route::post('/', 'CategoryController@store')->name('store');
     Route::get('/{category}', 'CategoryController@show')->name('show');
     Route::patch('/{category}', 'CategoryController@update')->name('update');
+    Route::delete('/{category}', 'CategoryController@destroy')->name('destroy');
 });

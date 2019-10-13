@@ -54,4 +54,10 @@ class CategoryController extends Controller
             new CategoryResource($category->fresh())
         );
     }
+
+    public function destroy(Category $category)
+    {
+        $category->delete();
+        return $this->respondEmpty();
+    }
 }
