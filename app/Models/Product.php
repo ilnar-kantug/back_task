@@ -5,28 +5,20 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
-use Kalnoy\Nestedset\NodeTrait;
 
-class Category extends Model
+class Product extends Model
 {
-    use NodeTrait;
-
-    const ATTR_NAME = 'name';
+    const ATTR_TITLE = 'title';
     const ATTR_SLUG = 'slug';
-    const ATTR_PARENT_ID = 'parent_id';
-
-    protected $fillable = [
-        self::ATTR_NAME,
-        self::ATTR_SLUG,
-        self::ATTR_PARENT_ID,
-    ];
+    const ATTR_DESCRIPTION = 'description';
+    const ATTR_IMAGE_URL = 'image_url';
 
     public function getRouteKeyName(): string
     {
         return self::ATTR_SLUG;
     }
 
-    public function products(): belongsToMany
+    public function categories(): belongsToMany
     {
         return $this->belongsToMany(Product::class);
     }
