@@ -21,3 +21,10 @@ Route::group([
     Route::patch('/{category}', 'CategoryController@update')->name('update');
     Route::delete('/{category}', 'CategoryController@destroy')->name('destroy');
 });
+
+Route::group([
+    'prefix' => 'products',
+    'as' => 'products.',
+], function ($router) {
+    Route::get('/', 'ProductController@index')->name('index');
+});
