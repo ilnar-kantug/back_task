@@ -17,7 +17,7 @@ class CreateProductsTable extends Migration
             $table->string('title');
             $table->string('slug')->unique();
             $table->text('description')->nullable();
-            $table->string('image_url');
+            $table->string('image_path');
             $table->timestamps();
         });
     }

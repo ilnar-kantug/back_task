@@ -11,6 +11,6 @@ $factory->define(Product::class, function (Faker $faker) {
         Product::ATTR_TITLE => $title = $faker->unique()->sentence(4),
         Product::ATTR_SLUG => Str::slug($title),
         Product::ATTR_DESCRIPTION => $faker->text,
-        Product::ATTR_IMAGE_URL => $faker->imageUrl(),
+        Product::ATTR_IMAGE_PATH => $faker->imageUrl(),
     ];
 });
