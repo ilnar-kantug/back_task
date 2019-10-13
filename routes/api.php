@@ -17,4 +17,5 @@ Route::group([
 ], function ($router) {
     Route::get('/', 'CategoryController@index')->name('index');
     Route::post('/', 'CategoryController@store')->name('store');
+    Route::get('/{category}', 'CategoryController@show')->name('show');
 });

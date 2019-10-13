@@ -24,6 +24,7 @@ class CategoryController extends Controller
 
     public function store(CategoryRequest $request)
     {
+        /** @var Category $category */
         $category = Category::create(
             $request->only([
                 Category::ATTR_NAME,
@@ -31,6 +32,16 @@ class CategoryController extends Controller
             ])
         );
 
-        return $this->respondJson(new CategoryResource($category), Response::HTTP_CREATED);
+        return $this->respondJson(
+            new CategoryResource($category->freshWithDepth()),
+            Response::HTTP_CREATED
+        );
+    }
+
+    public function show(Category $category)
+    {
+        return $this->respondJson(
+            new CategoryResource($category)
+        );
     }
 }

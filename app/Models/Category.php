@@ -4,6 +4,7 @@ declare(strict_types=1);
 namespace App\Models;
 
 use Carbon\Carbon;
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Support\Str;
@@ -57,5 +58,10 @@ class Category extends Model
     public function products(): belongsToMany
     {
         return $this->belongsToMany(Product::class);
+    }
+
+    public function freshWithDepth(): self
+    {
+        return self::withDepth()->find($this->id);
     }
 }
