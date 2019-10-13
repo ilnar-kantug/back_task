@@ -18,6 +18,8 @@ class ProductRequest extends FormRequest
             'title' => 'required|string|max:248',
             'description' => 'nullable|string',
             'photo' => 'required|file|image|max:3000',
+            'categories' => 'nullable|array',
+            'categories.*' => 'nullable|integer|exists:categories,id',
         ];
     }
 }

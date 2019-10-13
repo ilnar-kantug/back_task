@@ -47,7 +47,7 @@ class ProductController extends Controller
         $product = $this->service->create($request);
 
         return $this->respondJson(
-            new ProductResource($product)
+            new ProductResource($product->fresh('categories'))
         );
     }
 
@@ -60,7 +60,7 @@ class ProductController extends Controller
         );
 
         return $this->respondJson(
-            new ProductResource($product->fresh())
+            new ProductResource($product->fresh('categories'))
         );
     }
 }

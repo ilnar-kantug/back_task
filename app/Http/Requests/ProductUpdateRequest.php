@@ -25,6 +25,8 @@ class ProductUpdateRequest extends FormRequest
             ],
             'description' => 'nullable|string',
             'photo' => 'nullable|file|image|max:3000',
+            'categories' => 'nullable|array',
+            'categories.*' => 'nullable|integer|exists:categories,id',
         ];
     }
 }
