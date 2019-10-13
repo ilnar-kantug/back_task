@@ -6,6 +6,7 @@ namespace App\Http\Controllers;
 use App\Http\Controllers\Concerns\Responder;
 use App\Http\Requests\CategoryRequest;
 use App\Http\Requests\CategoryUpdateRequest;
+use App\Http\Resources\CategoryIndexResource;
 use App\Http\Resources\CategoryResource;
 use App\Models\Category;
 use Illuminate\Http\Response;
@@ -17,7 +18,7 @@ class CategoryController extends Controller
     public function index()
     {
         return $this->respondJson(
-            CategoryResource::collection(
+            CategoryIndexResource::collection(
                 Category::defaultOrder()->withDepth()->get()
             )
         );

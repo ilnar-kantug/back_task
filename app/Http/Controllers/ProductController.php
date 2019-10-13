@@ -32,7 +32,7 @@ class ProductController extends Controller
     public function show(Product $product)
     {
         return $this->respondJson(
-            new ProductResource($product)
+            new ProductResource($product->fresh('categories'))
         );
     }
 

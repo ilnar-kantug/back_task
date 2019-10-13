@@ -4,9 +4,8 @@ declare(strict_types=1);
 namespace App\Http\Resources;
 
 use App\Models\Category;
-use Illuminate\Http\Resources\Json\JsonResource;
 
-class CategoryResource extends JsonResource
+class CategoryIndexResource extends CategoryResource
 {
     /**
      * Transform the resource into an array.
@@ -17,10 +16,8 @@ class CategoryResource extends JsonResource
     public function toArray($request): array
     {
         /** @var Category $this */
-        return [
-            'id' => $this->getKey(),
-            'name' => $this->name,
-            'slug' => $this->slug,
-        ];
+        return array_merge(parent::toArray($request), [
+            'depth' => $this->depth
+        ]);
     }
 }

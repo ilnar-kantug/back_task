@@ -16,6 +16,7 @@ use Illuminate\Support\Str;
  * @property string $slug
  * @property string $description
  * @property string $image_path
+ * @property string $imageUrl
  * @property Carbon $created_at
  * @property Carbon $updated_at
  */

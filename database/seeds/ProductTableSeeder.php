@@ -4,6 +4,7 @@ declare(strict_types=1);
 use App\Models\Product;
 use App\Models\Category;
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Collection;
 
 class ProductTableSeeder extends Seeder
 {
@@ -12,10 +13,11 @@ class ProductTableSeeder extends Seeder
      */
     public function run(): void
     {
+        /** @var Collection $categories */
         $categories = Category::all();
-        $categories->each(function (Category $category) {
-            $products = factory(Product::class, rand(1, 5))->create();
-            $category->products()->attach($products->pluck('id'));
+        $products = factory(Product::class, rand(50, 100))->create();
+        $products->each(function (Product $product) use ($categories) {
+            $product->categories()->attach($categories->random(rand(2, 5)));
         });
     }
 }

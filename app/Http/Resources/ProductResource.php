@@ -23,6 +23,7 @@ class ProductResource extends JsonResource
             'slug' => $this->slug,
             'description' => $this->description,
             'image_url' => $this->imageUrl,
+            'categories' => CategoryResource::collection($this->whenLoaded('categories')),
         ];
     }
 }
