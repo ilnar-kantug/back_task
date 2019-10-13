@@ -17,4 +17,17 @@ class ProductController extends Controller
             ProductResource::collection(Product::all())
         );
     }
+
+    public function show(Product $product)
+    {
+        return $this->respondJson(
+            new ProductResource($product)
+        );
+    }
+
+    public function destroy(Product $product)
+    {
+        $product->delete();
+        return $this->respondEmpty();
+    }
 }

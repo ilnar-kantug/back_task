@@ -27,4 +27,6 @@ Route::group([
     'as' => 'products.',
 ], function ($router) {
     Route::get('/', 'ProductController@index')->name('index');
+    Route::get('/{product}', 'ProductController@show')->name('show');
+    Route::delete('/{product}', 'ProductController@destroy')->name('destroy');
 });
