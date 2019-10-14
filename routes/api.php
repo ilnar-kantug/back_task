@@ -20,6 +20,7 @@ Route::group([
     Route::get('/{category}', 'CategoryController@show')->name('show');
     Route::patch('/{category}', 'CategoryController@update')->name('update');
     Route::delete('/{category}', 'CategoryController@destroy')->name('destroy');
+    Route::get('/{category}/products', 'CategoryController@products')->name('products');
 });
 
 Route::group([

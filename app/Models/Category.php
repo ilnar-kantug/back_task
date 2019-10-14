@@ -7,6 +7,7 @@ use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
+use Illuminate\Support\Collection;
 use Illuminate\Support\Str;
 use Kalnoy\Nestedset\NodeTrait;
 
@@ -18,6 +19,7 @@ use Kalnoy\Nestedset\NodeTrait;
  * @property Carbon $created_at
  * @property Carbon $updated_at
  * @property integer $depth
+ * @property Collection $products
  */
 class Category extends Model
 {

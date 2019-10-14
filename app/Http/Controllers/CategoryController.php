@@ -8,6 +8,7 @@ use App\Http\Requests\CategoryRequest;
 use App\Http\Requests\CategoryUpdateRequest;
 use App\Http\Resources\CategoryIndexResource;
 use App\Http\Resources\CategoryResource;
+use App\Http\Resources\ProductResource;
 use App\Models\Category;
 use Illuminate\Http\Response;
 
@@ -60,5 +61,12 @@ class CategoryController extends Controller
     {
         $category->delete();
         return $this->respondEmpty();
+    }
+
+    public function products(Category $category)
+    {
+        return $this->respondJson(
+            ProductResource::collection($category->products)
+        );
     }
 }
