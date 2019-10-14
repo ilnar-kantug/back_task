@@ -1,0 +1,221 @@
+{
+	"info": {
+		"_postman_id": "f58a0b37-f654-47b4-b81b-33fb9da9c6f6",
+		"name": "Categories",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "index",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{host}}/categories",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"categories"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "store",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "name",
+							"value": "aaa",
+							"type": "text"
+						},
+						{
+							"key": "parent_id",
+							"value": "21",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "{{host}}/categories",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"categories"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "update",
+			"request": {
+				"method": "PATCH",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/x-www-form-urlencoded",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "name",
+							"value": "111112",
+							"type": "text"
+						},
+						{
+							"key": "slug",
+							"value": "aaa-sgqThn",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "{{host}}/categories/aaa-sgqThn",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"categories",
+						"aaa-sgqThn"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "show",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": []
+				},
+				"url": {
+					"raw": "{{host}}/categories/yazmin-ebert-6cTxtV",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"categories",
+						"yazmin-ebert-6cTxtV"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "products",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept",
+						"type": "text",
+						"value": "application/json"
+					},
+					{
+						"key": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": []
+				},
+				"url": {
+					"raw": "{{host}}/categories/alice-padberg-OrT6xi/products",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"categories",
+						"alice-padberg-OrT6xi",
+						"products"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "delete",
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Accept",
+						"type": "text",
+						"value": "application/json"
+					},
+					{
+						"key": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": []
+				},
+				"url": {
+					"raw": "{{host}}/categories/david-kertzmann-iii",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"categories",
+						"david-kertzmann-iii"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"protocolProfileBehavior": {}
+}

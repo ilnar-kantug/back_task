@@ -1,0 +1,226 @@
+{
+	"info": {
+		"_postman_id": "b2db811e-eabe-4dc3-9208-b087df60ec6b",
+		"name": "Products",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "index",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{host}}/products",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"products"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "store",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Accept",
+						"type": "text",
+						"value": "application/json"
+					},
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/x-www-form-urlencoded",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "title",
+							"value": "aaa12",
+							"type": "text"
+						},
+						{
+							"key": "photo",
+							"type": "file",
+							"src": "/home/iamopk/Рабочий стол/asasas.jpeg"
+						},
+						{
+							"key": "categories[0]",
+							"value": "3",
+							"type": "text"
+						},
+						{
+							"key": "categories[1]",
+							"value": "2",
+							"type": "text"
+						},
+						{
+							"key": "categories[3]",
+							"value": "4",
+							"type": "text",
+							"disabled": true
+						}
+					]
+				},
+				"url": {
+					"raw": "{{host}}/products",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"products"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "show",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{host}}/products/vel-quia-quia-adipisci-iqJPTW",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"products",
+						"vel-quia-quia-adipisci-iqJPTW"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "update",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "title",
+							"value": "asdasd233",
+							"type": "text"
+						},
+						{
+							"key": "slug",
+							"value": "aaa12-eLvYjd",
+							"type": "text"
+						},
+						{
+							"key": "description",
+							"value": "",
+							"type": "text"
+						},
+						{
+							"key": "photo",
+							"type": "file",
+							"src": "/home/iamopk/Рабочий стол/asasas.jpeg"
+						},
+						{
+							"key": "_method",
+							"value": "PATCH",
+							"type": "text"
+						},
+						{
+							"key": "categories[0]",
+							"value": "2",
+							"type": "text"
+						},
+						{
+							"key": "categories[1]",
+							"value": "11",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "{{host}}/products/aaa12-eLvYjd",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"products",
+						"aaa12-eLvYjd"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "delete",
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{host}}/products/reiciendis-nam-odio-earum-nesciunt-sit",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"products",
+						"reiciendis-nam-odio-earum-nesciunt-sit"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"protocolProfileBehavior": {}
+}
