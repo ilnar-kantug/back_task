@@ -67,4 +67,9 @@ class Product extends Model
     {
         return $this->belongsToMany(Category::class);
     }
+
+    public function getFreshWithCategories(): self
+    {
+        return $this->fresh('categories');
+    }
 }

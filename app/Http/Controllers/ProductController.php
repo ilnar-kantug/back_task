@@ -25,20 +25,20 @@ class ProductController extends Controller
     public function index()
     {
         return $this->respondJson(
-            ProductResource::collection(Product::all())
+            ProductResource::collection($this->service->getAll())
         );
     }
 
     public function show(Product $product)
     {
         return $this->respondJson(
-            new ProductResource($product->fresh('categories'))
+            new ProductResource($product->getFreshWithCategories())
         );
     }
 
     public function destroy(Product $product)
     {
-        $product->delete();
+        $this->service->delete($product);
         return $this->respondEmpty();
     }
 
@@ -47,7 +47,7 @@ class ProductController extends Controller
         $product = $this->service->create($request);
 
         return $this->respondJson(
-            new ProductResource($product->fresh('categories'))
+            new ProductResource($product->getFreshWithCategories())
         );
     }
 
@@ -60,7 +60,7 @@ class ProductController extends Controller
         );
 
         return $this->respondJson(
-            new ProductResource($product->fresh('categories'))
+            new ProductResource($product->getFreshWithCategories())
         );
     }
 }

@@ -6,32 +6,26 @@ namespace App\Services;
 use App\Http\Requests\ProductRequest;
 use App\Http\Requests\ProductUpdateRequest;
 use App\Models\Product;
-use Illuminate\Support\Facades\DB;
+use App\Models\Repositories\ProductRepository;
+use Illuminate\Support\Collection;
 
 class ProductService
 {
     protected $uploaderService;
+    protected $repository;
 
-    public function __construct(PhotoService $uploaderService)
-    {
+    public function __construct(
+        PhotoService $uploaderService,
+        ProductRepository $repository
+    ) {
         $this->uploaderService = $uploaderService;
+        $this->repository = $repository;
     }
 
     public function create(ProductRequest $request): Product
     {
         $imagePath = $this->uploaderService->savePhoto($request);
-        return DB::transaction(function () use ($request, $imagePath) {
-            $product = Product::create([
-                Product::ATTR_TITLE => $request->get('title'),
-                Product::ATTR_DESCRIPTION => $request->get('description'),
-                Product::ATTR_IMAGE_PATH => $imagePath,
-            ]);
-
-            if ($request->has('categories')) {
-                $product->categories()->attach($request->get('categories'));
-            }
-            return $product;
-        });
+        return $this->repository->createWithCategories($request, $imagePath);
     }
 
     public function update(Product $product, ProductUpdateRequest $request): bool
@@ -41,22 +35,16 @@ class ProductService
             $imagePath = $this->uploaderService->savePhoto($request);
         }
 
-        return DB::transaction(function () use ($request, $product, $imagePath) {
-            if ($request->has('categories')) {
-                $product->categories()->detach();
-                $product->categories()->attach($request->get('categories'));
-            }
+        return $this->repository->updateWithCategories($request, $product, $imagePath);
+    }
 
-            return $product->update([
-                Product::ATTR_TITLE => $request->get('title'),
-                Product::ATTR_SLUG => $request->get('slug'),
-                Product::ATTR_DESCRIPTION => $request->has('description')
-                    ? $request->get('description')
-                    : $product->description,
-                Product::ATTR_IMAGE_PATH => $request->has('photo')
-                    ? $imagePath
-                    : $product->image_path,
-            ]);
-        });
+    public function getAll(): Collection
+    {
+        return $this->repository->all();
+    }
+
+    public function delete(Product $product): ?bool
+    {
+        return $this->repository->delete($product);
     }
 }

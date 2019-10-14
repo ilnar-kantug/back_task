@@ -10,33 +10,35 @@ use App\Http\Resources\CategoryIndexResource;
 use App\Http\Resources\CategoryResource;
 use App\Http\Resources\ProductResource;
 use App\Models\Category;
+use App\Services\CategoryService;
 use Illuminate\Http\Response;
 
 class CategoryController extends Controller
 {
     use Responder;
 
+    protected $service;
+
+    public function __construct(CategoryService $service)
+    {
+        $this->service = $service;
+    }
+
     public function index()
     {
         return $this->respondJson(
             CategoryIndexResource::collection(
-                Category::defaultOrder()->withDepth()->get()
+                $this->service->getAll()
             )
         );
     }
 
     public function store(CategoryRequest $request)
     {
-        /** @var Category $category */
-        $category = Category::create(
-            $request->only([
-                Category::ATTR_NAME,
-                Category::ATTR_PARENT_ID
-            ])
-        );
+        $category = $this->service->create($request);
 
         return $this->respondJson(
-            new CategoryResource($category->freshWithDepth()),
+            new CategoryResource($category),
             Response::HTTP_CREATED
         );
     }
@@ -50,16 +52,16 @@ class CategoryController extends Controller
 
     public function update(CategoryUpdateRequest $request, Category $category)
     {
-        $category->update($request->only(['name', 'slug', 'parent_id']));
+        $category = $this->service->update($request, $category);
 
         return $this->respondJson(
-            new CategoryResource($category->fresh())
+            new CategoryResource($category)
         );
     }
 
     public function destroy(Category $category)
     {
-        $category->delete();
+        $this->service->delete($category);
         return $this->respondEmpty();
     }
 
